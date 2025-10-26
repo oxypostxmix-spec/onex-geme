@@ -88,7 +88,6 @@
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -215,19 +214,15 @@
                     if (playerPosition.x < gridSize - 1) playerPosition.x++;
                     break;
             }
-
             if (playerPosition.x === foodPosition.x && playerPosition.y === foodPosition.y) {
                 score += 10;
                 scoreElement.textContent = `Score: ${score}`;
                 foodPosition.x = Math.floor(Math.random() * gridSize);
                 foodPosition.y = Math.floor(Math.random() * gridSize);
             }
-
             updateGame();
         }
-
         document.addEventListener('keydown', handleMovement);
-
         updateGame();
     </script>
 </body>
@@ -604,7 +599,6 @@ if (playerPosition.x === foodPosition.x && playerPosition.y === foodPosition.y) 
     transform: scale(1.1);
 }
 </style>
-
 <!-- Add this right after the <body> tag -->
 <div class="audio-controls">
     <button class="audio-btn" id="toggleMusic">🎵 Music</button>
@@ -640,7 +634,6 @@ toggleMusicBtn.addEventListener('click', () => {
         toggleMusicBtn.style.background = 'rgba(255, 255, 255, 0.2)';
     }
 });
-
 // Sound effects controls
 toggleSoundBtn.addEventListener('click', () => {
     isSoundOn = !isSoundOn;
