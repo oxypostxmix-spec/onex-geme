@@ -10,23 +10,18 @@
             gap: 1px;
             background-color: #333;
             padding: 10px;
-            width: fit-content;
-        }
-        
+            width: fit-content;   
         .pixel {
             width: 20px;
             height: 20px;
             background-color: #fff;
         }
-        
-        .player {
+            .player {
             background-color: red;
         }
-        
         .food {
             background-color: green;
         }
-        
         #score {
             margin: 20px 0;
             font-size: 24px;
@@ -36,7 +31,6 @@
 <body>
     <div id="score">Score: 0</div>
     <div id="gameContainer"></div>
-
     <script>
         const container = document.getElementById('gameContainer');
         const scoreElement = document.getElementById('score');
@@ -44,32 +38,26 @@
         let score = 0;
         let playerPosition = {x: 0, y: 0};
         let foodPosition = {x: 10, y: 10};
-
         // Create grid
         for (let i = 0; i < gridSize * gridSize; i++) {
             const pixel = document.createElement('div');
             pixel.className = 'pixel';
             container.appendChild(pixel);
         }
-
         // Update game display
         function updateGame() {
             const pixels = document.getElementsByClassName('pixel');
             for (let i = 0; i < pixels.length; i++) {
                 pixels[i].classList.remove('player', 'food');
             }
-
             const playerIndex = playerPosition.y * gridSize + playerPosition.x;
-            const foodIndex = foodPosition.y * gridSize + foodPosition.x;
-            
+            const foodIndex = foodPosition.y * gridSize + foodPosition.x; 
             pixels[playerIndex].classList.add('player');
             pixels[foodIndex].classList.add('food');
         }
-
-        // Move player
+         // Move player
         document.addEventListener('keydown', (event) => {
             const oldPosition = {...playerPosition};
-
             switch(event.key) {
                 case 'ArrowUp':
                     if (playerPosition.y > 0) playerPosition.y--;
@@ -84,7 +72,6 @@
                     if (playerPosition.x < gridSize - 1) playerPosition.x++;
                     break;
             }
-
             // Check if player got food
             if (playerPosition.x === foodPosition.x && playerPosition.y === foodPosition.y) {
                 score += 10;
@@ -93,10 +80,8 @@
                 foodPosition.x = Math.floor(Math.random() * gridSize);
                 foodPosition.y = Math.floor(Math.random() * gridSize);
             }
-
-            updateGame();
+           updateGame();
         });
-
         // Initial game render
         updateGame();
     </script>
@@ -119,7 +104,6 @@
             padding: 20px;
             overflow: hidden;
         }
-
         /* RGB Border Animation */
         @keyframes rgb {
             0% { box-shadow: 0 0 50px rgb(255, 0, 0, 0.5); }
@@ -127,7 +111,6 @@
             66% { box-shadow: 0 0 50px rgb(0, 0, 255, 0.5); }
             100% { box-shadow: 0 0 50px rgb(255, 0, 0, 0.5); }
         }
-
         #gameContainer {
             display: grid;
             grid-template-columns: repeat(20, 20px);
@@ -140,24 +123,20 @@
             animation: rgb 5s infinite;
             backdrop-filter: blur(5px);
         }
-        
         .pixel {
             width: 20px;
             height: 20px;
             background-color: #333;
             border-radius: 3px;
-        }
-        
+        }  
         .player {
             background-color: #ff3e3e;
             box-shadow: 0 0 10px #ff3e3e;
-        }
-        
+        }   
         .food {
             background-color: #4eff4e;
             box-shadow: 0 0 10px #4eff4e;
-        }
-        
+        }    
         #score {
             margin: 20px 0;
             font-size: 24px;
@@ -165,7 +144,6 @@
             text-shadow: 0 0 10px #fff;
             font-family: Arial, sans-serif;
         }
-
         /* Control Buttons */
         .controls {
             margin-top: 20px;
@@ -173,7 +151,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-
         .control-btn {
             padding: 15px 25px;
             font-size: 18px;
@@ -186,12 +163,10 @@
             text-shadow: 0 0 5px #fff;
             box-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
-
         .control-btn:hover {
             background-color: #444;
             box-shadow: 0 0 15px rgba(255,255,255,0.4);
         }
-
         #up { grid-column: 2; }
         #left { grid-column: 1; grid-row: 2; }
         #right { grid-column: 3; grid-row: 2; }
@@ -207,8 +182,8 @@
         <button id="right" class="control-btn">→</button>
         <button id="down" class="control-btn">↓</button>
     </div>
-
-    <script>
+    
+<script>
         // ...existing code...
 
         // Add button controls
@@ -277,7 +252,6 @@
             padding: 20px;
             overflow: hidden;
         }
-
         /* Glowing RGB Animation */
         @keyframes rgbPulse {
             0% { 
@@ -297,7 +271,6 @@
                            inset 0 0 20px rgba(255, 0, 0, 0.3);
             }
         }
-
         #gameContainer {
             display: grid;
             grid-template-columns: repeat(20, 20px);
@@ -311,7 +284,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
         .pixel {
             width: 20px;
             height: 20px;
@@ -320,17 +292,14 @@
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
         .player {
             background-color: rgba(255, 62, 62, 0.8);
             box-shadow: 0 0 15px #ff3e3e;
         }
-        
         .food {
             background-color: rgba(78, 255, 78, 0.8);
             box-shadow: 0 0 15px #4eff4e;
         }
-        
         #score {
             margin: 20px 0;
             font-size: 28px;
@@ -342,14 +311,12 @@
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.1);
         }
-
         .controls {
             margin-top: 20px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-
         .control-btn {
             padding: 15px 25px;
             font-size: 18px;
@@ -363,13 +330,11 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
         }
-
         .control-btn:hover {
             background-color: rgba(68, 68, 68, 0.7);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             transform: scale(1.05);
         }
-
         /* Keep existing button positioning */
         #up { grid-column: 2; }
         #left { grid-column: 1; grid-row: 2; }
@@ -402,7 +367,6 @@
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
         }
-
         @keyframes titleGlow {
             from {
                 filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
@@ -411,7 +375,6 @@
                 filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
             }
         }
-
         .mobile-controls {
             position: fixed;
             bottom: 20px;
@@ -425,7 +388,6 @@
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .mobile-btn {
             width: 60px;
             height: 60px;
@@ -446,7 +408,6 @@
                 0 0 10px rgba(255, 255, 255, 0.2),
                 inset 0 0 10px rgba(255, 255, 255, 0.2);
         }
-
         .mobile-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.1);
@@ -454,12 +415,10 @@
                 0 0 20px rgba(255, 255, 255, 0.4),
                 inset 0 0 20px rgba(255, 255, 255, 0.4);
         }
-
         #mobileUp { grid-area: 1/2/2/3; }
         #mobileLeft { grid-area: 2/1/3/2; }
         #mobileRight { grid-area: 2/3/3/4; }
         #mobileDown { grid-area: 3/2/4/3; }
-
         /* Add floating light effects */
         .light-effect {
             position: fixed;
@@ -470,20 +429,17 @@
             z-index: -1;
             animation: floatLight 10s infinite linear;
         }
-
         .light-1 { 
             top: 10%;
             left: 10%;
             background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
         }
-
         .light-2 {
             bottom: 10%;
             right: 10%;
             background: radial-gradient(circle, rgba(0,255,0,0.1) 0%, transparent 70%);
             animation-delay: -5s;
         }
-
         @keyframes floatLight {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(50px, 50px) scale(1.5); }
@@ -496,7 +452,6 @@
     <div class="light-effect light-1"></div>
     <div class="light-effect light-2"></div>
     <h1 class="game-title">OnexMix</h1>
-
     <!-- Add mobile controls before closing body tag -->
     <div class="mobile-controls">
         <button class="mobile-btn" id="mobileUp">↑</button>
@@ -504,7 +459,6 @@
         <button class="mobile-btn" id="mobileRight">→</button>
         <button class="mobile-btn" id="mobileDown">↓</button>
     </div>
-
     <!-- Add this to your existing script -->
     <script>
         // Add mobile controls
@@ -512,7 +466,6 @@
         document.getElementById('mobileDown').addEventListener('click', () => movePlayer('ArrowDown'));
         document.getElementById('mobileLeft').addEventListener('click', () => movePlayer('ArrowLeft'));
         document.getElementById('mobileRight').addEventListener('click', () => movePlayer('ArrowRight'));
-
         // Add touch support for mobile buttons
         const mobileButtons = document.querySelectorAll('.mobile-btn');
         mobileButtons.forEach(button => {
@@ -535,7 +488,6 @@
         opacity: 0;
     }
 }
-
 .score-bubble {
     position: fixed;
     color: rgba(255, 255, 255, 0.9);
@@ -552,7 +504,6 @@
         0 0 20px rgba(255, 255, 255, 0.2),
         inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
-
 /* Enhanced button styles */
 .mobile-btn {
     width: 60px;
@@ -575,7 +526,6 @@
         inset 0 0 15px rgba(255, 255, 255, 0.2),
         0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 .mobile-btn:hover {
     background: rgba(255, 255, 255, 0.25);
     transform: scale(1.1) translateY(-2px);
@@ -584,7 +534,6 @@
         inset 0 0 25px rgba(255, 255, 255, 0.4),
         0 8px 20px rgba(0, 0, 0, 0.4);
 }
-
 .mobile-btn:active {
     transform: scale(0.95) translateY(2px);
     box-shadow: 
@@ -592,7 +541,6 @@
         inset 0 0 15px rgba(255, 255, 255, 0.2),
         0 2px 10px rgba(0, 0, 0, 0.2);
 }
-
 /* Add this to your existing script section */
 </style>
 
